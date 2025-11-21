@@ -1,0 +1,15 @@
+body{
+background-color: Orange;
+color: black;
+text-align: center;
+margin: 0;
+}
+#body-container {
+  background-color: #f7f7f7;
+  max-width: 1500px;
+  margin: auto;
+  min-height: 100vh;
+  border: 2px solid #f7f7f7;
+  border-radius: 25px;
+  /* overflow:hidden; */
+}

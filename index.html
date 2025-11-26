@@ -4,7 +4,7 @@
     <script src="js/secret_keys.js"></script>
     <title>Volcano Map</title>
     <link rel="icon" href="sources/volcano.png" type="image/x-icon">
-
+    <link rel="stylesheet" href="css/styles.css" />
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0, width=device-width">
 
@@ -14,10 +14,12 @@
     <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.5.0/turf.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@drustack/leaflet.resetview/dist/L.Control.ResetView.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@drustack/leaflet.resetview/dist/L.Control.ResetView.min.js"></script>
 
     <style>
         html, body, #mapid {
-            width: 100%;
+            width: 92%;
             height: 100%;
             margin: 0;
             padding: 0;
@@ -27,6 +29,9 @@
 
 <body>
     <div id="mapid"></div>
+
+    <h1 id="name">Volcano Map</h1>
+    <div id="siteCon">  <img src="sources/volcano.png""width="50" height="50"> </div>
 
     <script src="js/temp.js"></script>
 </body>

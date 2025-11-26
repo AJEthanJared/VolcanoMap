@@ -1,9 +1,10 @@
-body{
-background-color: Orange;
-color: black;
-text-align: center;
-margin: 0;
+body {
+  background-color: rgb(229, 187, 111);
+  color: black;
+  text-align: center;
+  margin: 0;
 }
+
 #body-container {
   background-color: #f7f7f7;
   max-width: 1500px;
@@ -12,4 +13,24 @@ margin: 0;
   border: 2px solid #f7f7f7;
   border-radius: 25px;
   /* overflow:hidden; */
+}
+
+#name {
+  margin: 50px;
+  float: right;
+  top: 0px;
+  position: absolute;
+  right: 0;
+  font-family: "Times New Roman", Times, serif;
+
+}
+
+#siteCon {
+  margin: 50px;
+  float: right;
+  top: -5px;
+  position: absolute;
+  right: 0;
+  left: 1200px;
+  
 }

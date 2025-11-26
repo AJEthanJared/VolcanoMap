@@ -1,9 +1,30 @@
 var mymap = L.map('mapid').setView([51.505, -0.09], 3);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 18
+//Adds a zoom reset and control to the map
+var ZoomViewer = L.Control.extend({
+  onAdd: function () {
+    var gauge = L.DomUtil.create('div');
+    gauge.style.width = '100px';
+    gauge.style.background = 'rgba(255,255,255,0.5)';
+    gauge.style.textAlign = 'right';
+    mymap.on('zoomstart zoom zoomend', function (ev) {
+      gauge.innerHTML = 'Zoom Level: ' + mymap.getZoom();
+    })
+    return gauge;
+  }
+});
+(new ZoomViewer).addTo(mymap);
+L.control.resetView({
+  position: "topleft",
+  title: "Reset view",
+  latlng: L.latLng([0, 0]),
+  zoom: 2,
 }).addTo(mymap);
+mymap.setView([0, 0], 2);
 
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 18
+}).addTo(mymap);
 
 //initial coordinate points that will be used for each volcanic area listed in our google spreadsheet
 var points = [
@@ -12,9 +33,11 @@ var points = [
 ];
 
 //Adding markers, buffers, colors to the buffers
-
 points.forEach(pt => {
-  L.marker(pt.coords).addTo(mymap).bindPopup(pt.name);
+  var marker = L.marker(pt.coords).addTo(mymap).bindPopup(pt.name);
+  let popupData = pt.name;
+  marker.bindPopup(popupData).openPopup();
+  marker.on('click', function (e) { mymap.setView(e.latlng, 14); })
 
   const turfPoint = turf.point([pt.coords[1], pt.coords[0]]);
 
@@ -37,4 +60,7 @@ points.forEach(pt => {
       }
     }).addTo(mymap);
   });
+
+
 });
+

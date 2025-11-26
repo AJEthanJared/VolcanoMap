@@ -48,7 +48,7 @@ body {
     right: 0;
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: rgb(255, 255, 255);
     min-width: 130px;
 }
 
@@ -59,7 +59,7 @@ body {
 }
 
 .dropdown-content a:hover {
-    background-color: #f1f1f1;
+    background-color: rgb(229, 187, 111);
 }
 .dropdown:hover .dropdown-content {
     display: block;

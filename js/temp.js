@@ -37,7 +37,7 @@ points.forEach(pt => {
   var marker = L.marker(pt.coords).addTo(mymap).bindPopup(pt.name);
   let popupData = pt.name;
   marker.bindPopup(popupData).openPopup();
-  marker.on('click', function (e) { mymap.setView(e.latlng, 14); })
+  marker.on('click', function (e) { mymap.setView(e.latlng, 7); })
 
   const turfPoint = turf.point([pt.coords[1], pt.coords[0]]);
 

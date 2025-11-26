@@ -34,3 +34,33 @@ body {
   left: 1200px;
   
 }
+
+.dropdown {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+    background-color: rgba(255, 0, 0, 0);
+    padding: 12px 16px;
+}
+
+.dropdown-content {
+    right: 0;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 130px;
+}
+
+.dropdown-content a {
+    display: block;
+    color: rgb(0, 119, 255);
+    padding: 12px 16px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}

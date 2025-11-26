@@ -18,7 +18,7 @@ body {
 #name {
   margin: 50px;
   float: right;
-  top: 0px;
+  top: 40px;
   position: absolute;
   right: 0;
   font-family: "Times New Roman", Times, serif;
@@ -28,7 +28,7 @@ body {
 #siteCon {
   margin: 50px;
   float: right;
-  top: -5px;
+  top: 35px;
   position: absolute;
   right: 0;
   left: 1200px;
@@ -62,5 +62,36 @@ body {
     background-color: rgb(229, 187, 111);
 }
 .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.volcanoSelectionDropdown {
+    position: absolute;
+    top: 200px;
+    right: 125px;
+    z-index: 1;
+    background-color: rgb(255, 255, 255);
+    padding: 12px 16px;
+}
+
+.volcano-dropdown-content {
+    right: 0;
+    display: none;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    min-width: 130px;
+}
+
+.volcano-dropdown-content a {
+    display: block;
+    color: rgb(0, 119, 255);
+    padding: 12px 16px;
+}
+
+.volcano-dropdown-content a:hover {
+    background-color: rgb(229, 187, 111);
+}
+.volcanoSelectionDropdown:hover .volcano-dropdown-content {
     display: block;
 }

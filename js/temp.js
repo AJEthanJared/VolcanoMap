@@ -22,6 +22,7 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
     subdomains: 'abcd',
     maxZoom: 19
 }).addTo(mymap);
+mymap.setView([0, 0], 2);
 
 // Reset button
 var resetButton = L.control({ position: 'topleft' });
@@ -127,4 +128,7 @@ mymap.on('click', function (e) {
       });
     }
   });
+
+
 });
+

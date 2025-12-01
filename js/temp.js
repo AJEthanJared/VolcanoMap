@@ -1,46 +1,41 @@
-var mymap = L.map('mapid').setView([51.505, -0.09], 3);
+// Initialize the map
+var mymap = L.map('mapid').setView([0, 0], 2);
 
-//Adds a zoom reset and control to the map
+// Zoom level display
 var ZoomViewer = L.Control.extend({
   onAdd: function () {
     var gauge = L.DomUtil.create('div');
     gauge.style.width = '100px';
     gauge.style.background = 'rgba(255,255,255,0.5)';
     gauge.style.textAlign = 'right';
-    mymap.on('zoomstart zoom zoomend', function (ev) {
+    mymap.on('zoomstart zoom zoomend', function () {
       gauge.innerHTML = 'Zoom Level: ' + mymap.getZoom();
-    })
+    });
     return gauge;
   }
 });
-(new ZoomViewer).addTo(mymap);
+(new ZoomViewer()).addTo(mymap);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 18
+// Base tile layer
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 19
 }).addTo(mymap);
 
+// Reset button
 var resetButton = L.control({ position: 'topleft' });
-
 resetButton.onAdd = function () {
-    var div = L.DomUtil.create('div', 'reset-btn');
-    div.innerHTML = '<button style="padding:4px; cursor:pointer;">Reset View</button>';
-
-    // Prevent clicks inside the button from affecting the map
-    L.DomEvent.disableClickPropagation(div);
-
-    div.onclick = function () {
-        mymap.setView([0, 0], 2);
-    };
-
-    return div;
+  var div = L.DomUtil.create('div', 'reset-btn');
+  div.innerHTML = '<button style="padding:4px; cursor:pointer;">Reset View</button>';
+  L.DomEvent.disableClickPropagation(div);
+  div.onclick = function () { mymap.setView([0, 0], 2); };
+  return div;
 };
-
 resetButton.addTo(mymap);
 
-//initial coordinate points that will be used for each volcanic area listed in our google spreadsheet
+// Volcano data
 var points = [
-  //these distances are in order of: pyroclastic flows, ash cloud, and sound
-  //same order as distances, but colors used are red, grey, and off-white
   { name: "Krakatoa 1883", coords: [-6.1021, 105.4230], distances: [40, 2500, 4800], colors: ["#FF0000", "#808080", "#FAF9F6"] },
   { name: "Mount Tambora 1815", coords: [-8.250, 118.000], distances: [20, 1300, 2600], colors: ["#FF0000", "#808080", "#FAF9F6"] },
   { name: "Mount St. Helens 1980", coords: [46.191, -122.194], distances: [8, 64, 322], colors: ["#FF0000", "#808080", "#FAF9F6"] },
@@ -50,26 +45,25 @@ var points = [
   { name: "Mount Pelée 1902", coords: [14.8166, -61.1666], distances: [8, 80, 322], colors: ["#FF0000", "#808080", "#FAF9F6"] },
   { name: "Nevado del Ruiz", coords: [4.8925, -75.3233], distances: [50, 0, 100], colors: ["#FF0000", "#808080", "#FAF9F6"] },
   { name: "Mount Pinatubo 1991", coords: [15.1429, 120.3496], distances: [16, 30, 2700], colors: ["#FF0000", "#808080", "#FAF9F6"] },
-
 ];
 
-var overlay = {};
+var overlay = {}; // Store volcano groups
+var selectedVolcano = null; // Currently selected volcano
 
-//Adding markers
+// Add markers and buffers
 points.forEach(pt => {
   var volcGroup = L.layerGroup();
-  var marker = L.marker(pt.coords).addTo(mymap).bindPopup(pt.name);
-  marker.on('click', function (e) {
-    mymap.setView(e.latlng, 7);
-  });
+
+  // Marker
+  var marker = L.marker(pt.coords).bindPopup(pt.name);
   marker.addTo(volcGroup);
 
-  const turfPoint = turf.point([pt.coords[1], pt.coords[0]]);
-
+  // Buffers
   pt.distances.forEach((dist, i) => {
+    const turfPoint = turf.point([pt.coords[1], pt.coords[0]]);
     const buffer = turf.buffer(turfPoint, dist, { units: 'kilometers' });
 
-    L.geoJSON(buffer, {
+    const bufferLayer = L.geoJSON(buffer, {
       style: {
         color: pt.colors[i],
         weight: 2,
@@ -82,10 +76,9 @@ points.forEach(pt => {
   overlay[pt.name] = volcGroup;
   volcGroup.addTo(mymap);
 });
-L.control.layers(null, overlay, { collapsed: false }).addTo(mymap);
 
+// Populate dropdown
 var select = document.getElementById("volcanoSelect");
-
 points.forEach(pt => {
   var opt = document.createElement("option");
   opt.text = pt.name;
@@ -93,25 +86,45 @@ points.forEach(pt => {
   select.appendChild(opt);
 });
 
-// --- Dropdown behavior ---
+// Dropdown change behavior
 select.addEventListener("change", function () {
-  var chosen = this.value;
+  const chosen = this.value;
+  selectedVolcano = overlay[chosen] || null;
+
+  Object.values(overlay).forEach(group => mymap.removeLayer(group));
 
   if (chosen === "all") {
-    Object.values(overlay).forEach(group => {
-      if (!mymap.hasLayer(group)) mymap.addLayer(group);
-    });
+    Object.values(overlay).forEach(group => mymap.addLayer(group));
+    selectedVolcano = null;
     mymap.setView([0, 0], 2);
     return;
   }
 
-  Object.values(overlay).forEach(group => {
-    if (mymap.hasLayer(group)) mymap.removeLayer(group);
+  if (selectedVolcano) {
+    mymap.addLayer(selectedVolcano);
+    mymap.fitBounds(selectedVolcano.getBounds());
+  }
+});
+
+// Click map to move selected volcano's buffers
+mymap.on('click', function (e) {
+  if (!selectedVolcano) return;
+
+  selectedVolcano.eachLayer(layer => {
+    // Only move buffer polygons, not markers
+    if (layer instanceof L.GeoJSON) {
+      layer.eachLayer(poly => {
+        if (poly instanceof L.Polygon) {
+          const center = poly.getBounds().getCenter();
+          const latDiff = e.latlng.lat - center.lat;
+          const lngDiff = e.latlng.lng - center.lng;
+
+          const newLatLngs = poly.getLatLngs().map(ring =>
+            ring.map(coord => L.latLng(coord.lat + latDiff, coord.lng + lngDiff))
+          );
+          poly.setLatLngs(newLatLngs);
+        }
+      });
+    }
   });
-
-  var group = overlay[chosen];
-  group.addTo(mymap);
-
-  var pt = points.find(p => p.name === chosen);
-  mymap.setView(pt.coords, 7);
 });

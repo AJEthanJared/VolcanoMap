@@ -16,14 +16,22 @@
     <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.5.0/turf.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@drustack/leaflet.resetview/dist/L.Control.ResetView.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@drustack/leaflet.resetview/dist/L.Control.ResetView.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.path.drag/0.0.13/Path.Drag.min.js"></script>
 
     <style>
-        html, body, #mapid {
-            width: 92%;
+        html, body {
+            width: 100%;
             height: 100%;
             margin: 0;
             padding: 0;
         }
+
+        #mapid {
+          width: 65%;
+          height: 100%;
+          float: left;
+        }
+
     </style>
 </head>
 
@@ -31,7 +39,7 @@
     <div id="mapid"></div>
 
     <div id="rightContent">
-        <div id="siteCon">  <img src="sources/Logo.png" "width="300" height="200"> </div>
+        <div id="siteCon">  <img src="sources/logo.png" width="400" height="200"> </div>
 
         <div class="dropdown">
             <div style="text-decoration: underline;">About Us & FAQ</div>
@@ -44,14 +52,11 @@
 
         <div class="volcanoSelectionDropdown">
             <div style="text-decoration: underline;">Pick a Volcano!</div>
-            <div class="volcano-dropdown-content">
-                <div>Test</div>
-                <div>Test</div>
-                <div>Test</div>
-            </div>
+            <select id="volcanoSelect" style="width: 180px; margin-top: 8px;">
+                <option value="all">Show All</option>
+            </select>
         </div>
     </div>
-
 
     <script src="js/temp.js"></script>
 </body>

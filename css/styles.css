@@ -3,6 +3,7 @@ body {
   color: black;
   text-align: center;
   margin: 0;
+  display: flex;
 }
 
 #body-container {
@@ -12,26 +13,20 @@ body {
   min-height: 100vh;
   border: 2px solid #f7f7f7;
   border-radius: 25px;
+  display: flex;
   /* overflow:hidden; */
 }
 
-#name {
-  margin: 50px;
-  float: right;
-  top: 40px;
-  position: absolute;
-  right: 0;
-  font-family: "Times New Roman", Times, serif;
-
+#rightContent {
+  display: flex;
 }
 
 #siteCon {
   margin: 50px;
   float: right;
-  top: 35px;
+  top: 10px;
   position: absolute;
   right: 0;
-  left: 1200px;
   
 }
 
@@ -68,8 +63,8 @@ body {
 
 .volcanoSelectionDropdown {
     position: absolute;
-    top: 175px;
-    right: 125px;
+    top: 300px;
+    right: 200px;
     z-index: 1;
     background-color: rgb(255, 255, 255);
     padding: 12px 16px;

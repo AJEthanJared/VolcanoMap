@@ -1,21 +1,58 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script src="js/secret_keys.js"></script>
-        <title>Volcano Map</title>
-        <link rel="icon" href="sources/volcano.png" type="image/x-icon">
+<head>
+    <script src="js/secret_keys.js"></script>
+    <title>Volcano Map</title>
+    <link rel="icon" href="sources/volcano.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/styles.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
 
-        <meta charset="utf-8">
-        <meta name = "viewport" content = "width=device-width, initial- scale=1.0" />
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="">
-        <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js" integrity="sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s=" crossorigin=""></script>
-    </head>
-    <body>
-        <div id="mapid" style="width: 600px; height: 400px; margin: auto; top: 30px; bottom: 30px;">
-            <script>
-                var mymap = L.map('mapid').setView([51.505, -0.09], 1);
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?access_token={accessToken}', {maxZoom: 18, id: 'mapbox.mapbox - traffic - v1', accessToken: mapbox_access_token}).addTo(mymap);
-            </script>
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css" />
+
+    <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.5.0/turf.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@drustack/leaflet.resetview/dist/L.Control.ResetView.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@drustack/leaflet.resetview/dist/L.Control.ResetView.min.js"></script>
+
+    <style>
+        html, body, #mapid {
+            width: 92%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mapid"></div>
+
+    <div id="rightContent">
+        <div id="siteCon">  <img src="sources/Logo.png" "width="300" height="200"> </div>
+
+        <div class="dropdown">
+            <div style="text-decoration: underline;">About Us & FAQ</div>
+            <div class="dropdown-content">
+                    <a href="aboutUs.html" target="_blank">About Us</a>
+                    <a href="information.html" target="_blank">FAQ</a>
+            </div>
         </div>
-    </body>
+
+
+        <div class="volcanoSelectionDropdown">
+            <div style="text-decoration: underline;">Pick a Volcano!</div>
+            <div class="volcano-dropdown-content">
+                <div>Test</div>
+                <div>Test</div>
+                <div>Test</div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/temp.js"></script>
+</body>
 </html>

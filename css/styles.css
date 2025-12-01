@@ -1,9 +1,11 @@
-body{
-background-color: Orange;
-color: black;
-text-align: center;
-margin: 0;
+body {
+  background-color: rgb(229, 187, 111);
+  color: black;
+  text-align: center;
+  margin: 0;
+  display: flex;
 }
+
 #body-container {
   background-color: #f7f7f7;
   max-width: 1500px;
@@ -11,5 +13,80 @@ margin: 0;
   min-height: 100vh;
   border: 2px solid #f7f7f7;
   border-radius: 25px;
+  display: flex;
   /* overflow:hidden; */
+}
+
+#rightContent {
+  display: flex;
+}
+
+#siteCon {
+  margin: 50px;
+  float: right;
+  top: 10px;
+  position: absolute;
+  right: 0;
+
+}
+
+.dropdown {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+    background-color: rgba(255, 0, 0, 0);
+    padding: 12px 16px;
+}
+
+.dropdown-content {
+    right: 0;
+    display: none;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    min-width: 130px;
+}
+
+.dropdown-content a {
+    display: block;
+    color: rgb(0, 119, 255);
+    padding: 12px 16px;
+}
+
+.dropdown-content a:hover {
+    background-color: rgb(229, 187, 111);
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.volcanoSelectionDropdown {
+    position: absolute;
+    top: 300px;
+    right: 200px;
+    z-index: 1;
+    background-color: rgb(255, 255, 255);
+    padding: 12px 16px;
+}
+
+.volcano-dropdown-content {
+    right: 0;
+    display: none;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    min-width: 130px;
+}
+
+.volcano-dropdown-content a {
+    display: block;
+    color: rgb(0, 119, 255);
+    padding: 12px 16px;
+}
+
+.volcano-dropdown-content a:hover {
+    background-color: rgb(229, 187, 111);
+}
+.volcanoSelectionDropdown:hover .volcano-dropdown-content {
+    display: block;
 }

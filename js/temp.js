@@ -84,25 +84,8 @@ points.forEach(pt => {
 });
 L.control.layers(null, overlay, { collapsed: false }).addTo(mymap);
 
-// --- Create dropdown UI ---
-var selectDiv = L.DomUtil.create('div', 'volcano-select');
-selectDiv.style.background = 'white';
-selectDiv.style.padding = '6px';
-selectDiv.style.borderRadius = '4px';
+var select = document.getElementById("volcanoSelect");
 
-L.DomEvent.disableClickPropagation(selectDiv);
-L.DomEvent.disableScrollPropagation(selectDiv);
-
-var select = L.DomUtil.create('select', '', selectDiv);
-select.style.width = "180px";
-
-// Add default option
-var defaultOption = document.createElement("option");
-defaultOption.text = "Show All";
-defaultOption.value = "all";
-select.appendChild(defaultOption);
-
-// Add each volcano to dropdown
 points.forEach(pt => {
   var opt = document.createElement("option");
   opt.text = pt.name;
@@ -110,20 +93,11 @@ points.forEach(pt => {
   select.appendChild(opt);
 });
 
-// Add the dropdown as a Leaflet control
-var VolcanoSelectControl = L.Control.extend({
-  onAdd: function () { return selectDiv; },
-  onRemove: function () {}
-});
-(new VolcanoSelectControl({ position: "topright" })).addTo(mymap);
-
-
 // --- Dropdown behavior ---
 select.addEventListener("change", function () {
   var chosen = this.value;
 
   if (chosen === "all") {
-    // Show all volcano groups
     Object.values(overlay).forEach(group => {
       if (!mymap.hasLayer(group)) mymap.addLayer(group);
     });
@@ -131,16 +105,13 @@ select.addEventListener("change", function () {
     return;
   }
 
-  // Hide ALL volcano groups
   Object.values(overlay).forEach(group => {
     if (mymap.hasLayer(group)) mymap.removeLayer(group);
   });
 
-  // Show the selected volcano
   var group = overlay[chosen];
   group.addTo(mymap);
 
-  // Pan to marker location
   var pt = points.find(p => p.name === chosen);
   mymap.setView(pt.coords, 7);
 });

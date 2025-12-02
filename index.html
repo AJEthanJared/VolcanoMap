@@ -30,32 +30,39 @@
           width: 65%;
           height: 100%;
           float: left;
+          margin-top: 0px;
         }
 
     </style>
 </head>
 
 <body>
+    <div class="top-nav">
+      <a href="index.html" class="active">Map</a>
+      <a href="aboutUs.html">About Us</a>
+      <a href="information.html">FAQ</a>
+    </div>
+
     <div id="mapid"></div>
 
     <div id="rightContent">
-        <div id="siteCon">  <img src="sources/Logo.png" width="800" height="300"> </div>
-
-        <div class="dropdown">
-            <div style="text-decoration: underline;">About Us & FAQ</div>
-            <div class="dropdown-content">
-                    <a href="aboutUs.html" target="_blank">About Us</a>
-                    <a href="information.html" target="_blank">FAQ</a>
-            </div>
-        </div>
+        <div id="siteCon">  <img src="sources/Logo.png" width="500" height="200"> </div>
 
 
-        <div class="volcanoSelectionDropdown">
+          <div class="volcanoSelectionDropdown">
             <div style="text-decoration: underline;"><b>Pick a Volcano!</b></div>
             <select id="volcanoSelect" style="width: 180px; margin-top: 8px;">
                 <option value="all">Show All</option>
             </select>
-        </div>
+          </div>
+
+          <div id="bufferToggles" style="margin-top:20px;">
+            <h3 style="margin-bottom:6px;">Toggle Buffers</h3>
+            <label><input type="checkbox" id="togglePyro" checked> Pyroclastic Flow</label><br>
+            <label><input type="checkbox" id="toggleAsh" checked> Ash Cloud</label><br>
+            <label><input type="checkbox" id="toggleSound" checked> Sound Shockwave</label>
+          </div>
+
     </div>
 
     <script src="js/temp.js"></script>

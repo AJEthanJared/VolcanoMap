@@ -44,7 +44,7 @@ var points = [
   { name: "Santorini 1600 BC", coords: [36.3956, 25.4592], distances: [70, 27, 4800], colors: ["#FF0000", "#808080", "#FAF9F6"] },
   { name: "Mount Bandai 1888", coords: [37.6127, 140.0761], distances: [6, 0, 100], colors: ["#FF0000", "#808080", "#FAF9F6"] },
   { name: "Mount Pelée 1902", coords: [14.8166, -61.1666], distances: [8, 80, 322], colors: ["#FF0000", "#808080", "#FAF9F6"] },
-  { name: "Nevado del Ruiz", coords: [4.8925, -75.3233], distances: [50, 0, 100], colors: ["#FF0000", "#808080", "#FAF9F6"] },
+  { name: "Nevado del Ruiz 1985", coords: [4.8925, -75.3233], distances: [50, 0, 100], colors: ["#FF0000", "#808080", "#FAF9F6"] },
   { name: "Mount Pinatubo 1991", coords: [15.1429, 120.3496], distances: [16, 30, 2700], colors: ["#FF0000", "#808080", "#FAF9F6"] },
 ];
 

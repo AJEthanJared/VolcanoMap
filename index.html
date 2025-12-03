@@ -18,6 +18,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@drustack/leaflet.resetview/dist/L.Control.ResetView.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.path.drag/0.0.13/Path.Drag.min.js"></script>
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
     <style>
         html, body {
             width: 100%;
@@ -50,21 +53,50 @@
 
 
           <div class="volcanoSelectionDropdown">
-            <div style="text-decoration: underline;"><b>Pick a Volcano!</b></div>
+            <div style="text-decoration: underline; font-size: 18px;"><b>Pick a Volcano!</b></div>
             <select id="volcanoSelect" style="width: 180px; margin-top: 8px;">
                 <option value="all">Show All</option>
             </select>
           </div>
 
-          <div id="bufferToggles" style="margin-top:20px;">
-            <h3 style="margin-bottom:6px;">Toggle Buffers</h3>
-            <label><input type="checkbox" id="togglePyro" checked> Pyroclastic Flow</label><br>
-            <label><input type="checkbox" id="toggleAsh" checked> Ash Cloud</label><br>
-            <label><input type="checkbox" id="toggleSound" checked> Sound Shockwave</label>
+          <div id="bufferToggles">
+            <h3 style="text-decoration: underline; margin-top:6px;">Toggle Buffers</h3>
+
+            <label class="buffer-item">
+              <span class="dot pyro"></span>
+              <input type="checkbox" id="togglePyro" checked>
+              Pyroclastic Flow
+            </label>
+
+            <label class="buffer-item">
+              <span class="dot ash"></span>
+              <input type="checkbox" id="toggleAsh" checked>
+              Ash Cloud
+            </label>
+
+            <label class="buffer-item">
+              <span class="dot sound"></span>
+              <input type="checkbox" id="toggleSound" checked>
+              Sound Shockwave
+            </label>
+          </div>
+
+          <div id="customBufferBox">
+            <h3 style="text-decoration: underline; margin-top:6px;">Custom Buffer</h3>
+            <input type="number" id="customBufferDistance" placeholder="Distance (km)" min="0" />
+            <button id="addCustomBufferBtn">Add Buffer</button>
+          </div>
+
+          <div id="bufferControls">
+            <button id="resetBuffersBtn">Reset</button>
           </div>
 
     </div>
 
     <script src="js/temp.js"></script>
+
+    <footer class="site-footer">
+      <p>&copy; Volcano Map — AJEthanJared</p>
+    </footer>
 </body>
 </html>

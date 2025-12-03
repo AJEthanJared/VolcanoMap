@@ -1,249 +1,304 @@
 /* Global styling */
-
 body {
-  background-color: rgb(229, 187, 111);
-  color: black;
-  text-align: center;
-  margin: 0;
-  /*display: flex;*/
+    background-color: #e5bb6f;
+    color: black;
+    text-align: center;
+    margin: 0;
+    font-family: "Arial", sans-serif;
 }
 
 #body-container {
-  background-color: #f7f7f7;
-  max-width: 1500px;
-  margin: auto;
-  margin-top: 0px;
-  min-height: 100vh;
-  border: 2px solid #f7f7f7;
-  border-radius: 25px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    background-color: #f7f7f7;
+    max-width: 1500px;
+    margin: 0 auto;
+    min-height: 100vh;
+    border: 2px solid #f7f7f7;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Right panel styling for map page */
-
-#rightContent {
-  display: flex;
-}
-
-#siteCon {
-  margin: 50px;
-  float: right;
-  top: 10px;
-  position: absolute;
-  right: 0;
-
-}
-
-.dropdown {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 1;
-    background-color: rgba(255, 0, 0, 0);
-    padding: 12px 16px;
-}
-
-.dropdown-content {
-    right: 0;
-    display: none;
-    position: absolute;
-    background-color: rgb(255, 255, 255);
-    min-width: 130px;
-}
-
-.dropdown-content a {
-    display: block;
-    color: rgb(0, 119, 255);
-    padding: 12px 16px;
-}
-
-.dropdown-content a:hover {
-    background-color: rgb(229, 187, 111);
-}
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-
-.volcanoSelectionDropdown {
-    position: absolute;
-    top: 300px;
-    right: 200px;
-    z-index: 1;
-    background-color: rgb(255, 255, 255);
-    padding: 12px 16px;
-}
-
-.volcano-dropdown-content {
-    right: 0;
-    display: none;
-    position: absolute;
-    background-color: rgb(255, 255, 255);
-    min-width: 130px;
-}
-
-.volcano-dropdown-content a {
-    display: block;
-    color: rgb(0, 119, 255);
-    padding: 12px 16px;
-}
-
-.volcano-dropdown-content a:hover {
-    background-color: rgb(229, 187, 111);
-}
-.volcanoSelectionDropdown:hover .volcano-dropdown-content {
-    display: block;
-}
-
-#rightContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 0px;
-  float: right;
-  width: 35%;
-  position: relative;
-}
-
-#siteCon {
-  margin: 0 0 20px 0;
-  float: none;
-  position: relative;
-}
-
-.dropdown {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 1;
-    background-color: rgba(255, 0, 0, 0);
-    padding: 12px 16px;
-}
-
-.dropdown-content {
-    right: 0;
-    display: none;
-    position: absolute;
-    background-color: rgb(255, 255, 255);
-    min-width: 130px;
-}
-
-.dropdown-content a {
-    display: block;
-    color: rgb(0, 119, 255);
-    padding: 12px 16px;
-}
-
-.dropdown-content a:hover {
-    background-color: rgb(229, 187, 111);
-}
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-
-.volcanoSelectionDropdown {
-    position: absolute;
-    top: 0px;
-    right: 200px;
-    z-index: 1;
-    background-color: rgba(70, 47, 47, 0);
-    padding: 12px 16px;
-    border-radius: 8px;
-}
-
-.volcano-dropdown-content {
-    right: 0;
-    display: none;
-    position: absolute;
-    background-color: rgb(255, 255, 255);
-    min-width: 130px;
-}
-
-.volcano-dropdown-content a {
-    display: block;
-    color: rgb(0, 119, 255);
-    padding: 12px 16px;
-}
-
-.volcano-dropdown-content a:hover {
-    background-color: rgb(229, 187, 111);
-}
-.volcanoSelectionDropdown:hover .volcano-dropdown-content {
-    display: block;
-}
-
-#volcanoSelect {
-  padding: 8px 12px;
-  border-radius: 6px;
-  border: 1px solid #b22222;
-  background-color: #2c2c2c;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-#volcanoSelect:hover {
-  background: #b22222;
-  box-shadow: 0 0 10px #ff4500;
-  color: white;
-  transform: translateY(-2px);
-}
-
-/* Top bar tabs styling */
-
+/* Top bar tabs */
 .top-nav {
-  width: 100%
-  background-color: #2c2c2c;
-  padding: 10px 0;
-  text-align: left;
-  position: relative;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    width: 100%;
+    background-color: #e5bb6f;
+    padding: 5px 0;
+    text-align: left;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
 .top-nav a {
-  display: inline-block;
-  color: white;
-  text-decoration: none;
-  margin: 0 15px;
-  padding: 10px 20px;
-  font-size: 18px;
-  border-radius: 8px;
-  background-color: #3b3b3b;
-  transition: background 0.2s;
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 8px;
+    background-color: #3b3b3b;
+    transition: background 0.2s;
 }
 
 .top-nav a:hover {
-  background-color: #b22222;
-  color: white;
-  box-shadow: 0 0 10px #ff4500;
-  transform: translateY(-2px);
+    background-color: #b22222;
+    box-shadow: 0 0 10px #ff4500;
+    transform: translateY(-2px);
 }
 
 .top-nav a.active {
-  background-color: #ff4500;
-  color: black
-  box-shadow: inset 0 0 5px #ffdead;
+    background-color: #ff4500;
+    color: black;
+    box-shadow: inset 0 0 5px #ffdead;
 }
 
-/* Buffer toggle styling */
+/* Right panel */
+#rightContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -15px;
+    float: right;
+    width: 35%;
+    z-index: 9999;
+    position: relative;
+}
 
+#siteCon {
+    margin: 0 0 20px 0;
+    float: none;
+    position: relative;
+}
+
+/* Dropdown menus */
+.dropdown, .volcanoSelectionDropdown {
+    position: absolute;
+    z-index: 1;
+    border-radius: 8px;
+    background-color: rgba(255, 0, 0, 0);
+    font-size: 20px;
+}
+
+.dropdown { top: 10px; right: 10px; }
+.volcanoSelectionDropdown {
+  top: 0;
+  right: 200px;
+  background-color: rgba(70, 47, 47, 0);
+ }
+
+.dropdown-content, .volcano-dropdown-content {
+    right: 0;
+    display: none;
+    position: absolute;
+    background-color: rgb(255,255,255);
+    min-width: 130px;
+}
+
+.dropdown-content a, .volcano-dropdown-content a {
+    display: block;
+    color: rgb(0,119,255);
+    padding: 12px 16px;
+}
+
+.dropdown-content a:hover, .volcano-dropdown-content a:hover {
+    background-color: rgb(229,187,111);
+}
+
+.dropdown:hover .dropdown-content,
+.volcanoSelectionDropdown:hover .volcano-dropdown-content {
+    display: block;
+}
+
+/* Volcano select dropdown styling */
+#volcanoSelect {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #b22222;
+    background-color: #2c2c2c;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#volcanoSelect:hover {
+    background-color: #b22222;
+    box-shadow: 0 0 10px #ff4500;
+    transform: translateY(-2px);
+}
+
+/* Buffer toggles */
 #bufferToggles, .volcanoSelectionDropdown {
-  background: rgba(255,255,255,0.15);
-  border-radius: 8px;
-  padding: 10px;
-  width: 200px;
-  margin-top: 0px;
-  right: 0px;
-  position: relative;
+    background: rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 10px;
+    width: 200px;
+    margin-top: 2px;
+    right: 0;
+    position: relative;
+    z-index: 9999;
 }
 
 #bufferToggles label, .volcanoSelectionDropdown div {
-  font-size: 14px;
+    font-size: 14px;
+}
+
+.buffer-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 6px 0;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.buffer-item * {
+    user-select: none;
+}
+
+.dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 2px solid rgba(255,255,255,0.6);
+    box-shadow: 0 0 4px rgba(0,0,0,0.3);
+    flex-shrink: 0;
+}
+
+.pyro { background-color: #FF0000; }
+.ash { background-color: #808080; }
+.sound { background-color: #EBE98A; }
+
+.buffer-item:hover .dot {
+    transform: scale(1.15);
+    box-shadow: 0 0 8px rgba(255,255,255,0.8);
+    transition: 0.15s;
+}
+
+/* Leaflet popup styling */
+.leaflet-popup-content-wrapper {
+    background: #2c2c2c !important;
+    color: #f0e6d2 !important;
+    border-radius: 12px !important;
+    border: 2px solid #b22222;
+    box-shadow: 0 0 12px #ff4500aa;
+}
+
+.leaflet-popup-tip {
+    background: #2c2c2c !important;
+    border: 2px solid #b22222;
+}
+
+.leaflet-popup-content {
+    margin: 10px !important;
+    text-align: center;
+}
+
+.leaflet-popup-content-wrapper:hover {
+    box-shadow: 0 0 16px #ff4500;
+}
+
+.popup-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffdead;
+    margin-bottom: 10px;
+    text-shadow: 0 0 6px #ff4500;
+}
+
+.popup-image {
+    width: 160px;
+    border-radius: 8px;
+    box-shadow: 0 0 8px #000;
+    margin-bottom: 8px;
+}
+
+.popup-desc {
+    font-size: 14px;
+    line-height: 1.35;
+    color: #f0e6d2;
+}
+
+/* Custom buffer box */
+#customBufferBox {
+    background: rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 12px;
+    width: 200px;
+    margin-top: 3px;
+    position: relative;
+    z-index: 9999;
+}
+
+#customBufferBox input {
+    width: 90%;
+    padding: 6px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    border: 1px solid #b22222;
+    background: #2c2c2c;
+    color: white;
+}
+
+#customBufferBox button {
+    width: 100%;
+    padding: 6px;
+    background: #b22222;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+#customBufferBox button:hover {
+    background: #ff4500;
+    box-shadow: 0 0 8px #ff4500;
+}
+
+/* Footer */
+.site-footer {
+    width: 100%;
+    text-align: center;
+    margin-top: 150px;
+    margin-bottom: 20px;
+    position: relative;
+    pointer-events: none;
+}
+
+.site-footer p {
+    display: inline-block;
+    background: rgba(44,44,44,0.85);
+    color: #f0f0f0;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid #555;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.3);
+}
+
+/* Reset Buffers Button */
+#resetBuffersBtn {
+    width: 100%;
+    padding: 6px;
+    background: #2c2c2c;
+    color: white;
+    border: 1px solid #b22222;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: 0.2s;
+}
+
+#resetBuffersBtn:hover {
+    background: #b22222;
+    box-shadow: 0 0 8px #ff4500;
 }

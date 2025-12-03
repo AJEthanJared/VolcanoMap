@@ -1,2 +1,3 @@
 For our web map we created preset volcanic eruptions that are shown and can be selected through a drop down menu to show them individually or all at once with the show all option. The buffers are toggle-able when a preset is selected and can show or hide them. A custom buffer feature is also included that allows user input to click on the map and place a buffer of a size they type. A reset button is included to help git rid of the placed buffer and make the make go back to its default state. Zoom levels and features are added as well as a search function that allows users to type in an area and it will zoom into that spot, mainly to be used in conjunction with custom buffers or the moveable presets.
-<img width="1917" height="912" alt="Webpage" src="https://github.com/user-attachments/assets/0df07c55-b323-4841-a4cb-296f0c59b7eb" />
+
+<img width="1917" height="920" alt="Webpage" src="https://github.com/user-attachments/assets/0577c02a-85a9-4d7a-bf59-b0b96d14770c" />
